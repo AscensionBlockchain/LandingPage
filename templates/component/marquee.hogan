@@ -1,0 +1,18 @@
+<div class="marquee">
+	<div class="marquee3k">
+		<div>
+	        {{#Marquee}}
+			<span>
+				{{Name}}
+				{{#Up}}
+				<i class="icon-up-open"></i>
+				{{/Up}}
+				{{^Up}}
+				<i class="icon-down-open"></i>
+				{{/Up}}
+				{{Change}}%
+			</span>
+			{{/Marquee}}
+		</div>
+    </div>
+</div>

@@ -1,0 +1,15 @@
+<section class="hero">
+	<div class="content">
+		<div class="copy">
+			<h1 id="title" class="animated fadeInUp delay-4s slow">
+				{{TitleTop}} <br> {{TitleMiddle}} <br> {{TitleBottom}}
+			</h1>
+			<h4 id="subtitle" class="animated fadeInDown delay-2s slow">
+				{{Subtitle}}
+			</h4>
+			<div id="whitepaper" class="button-group animated fadeInUp delay-5s slower">
+				<button class="button"> Read the Whitepaper	</button>
+			</div>			
+		</div>
+	</div>
+</section>

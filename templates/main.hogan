@@ -1,0 +1,13 @@
+<main id="main">
+	<div class="world-image"></div>
+
+	{{> component.hero}}
+	
+	{{#Ticker1}}
+	{{> component.marquee}}
+	{{/Ticker1}}
+	
+	{{#Ticker2}}
+	{{> component.marquee}}
+	{{/Ticker2}}
+</main>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <title>{{.SiteName}}</title>
+    <link rel="stylesheet" href="/app/styles.css" type="text/css">
+	<!-- favicon generated -->
+	<link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+	<link rel="shortcut icon" href="/assets/favicon.ico">
+	<!-- --- -->
+	<link rel="icon" href="/assets/favicon.png?v1">
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet">
+    <style type="text/css">
+		{{.IconFont}}
+	</style>
+</head>
+
+<body>
+    <main>
+	    <header>
+			<div class="logo-wrapper animated fadeInUp delay-1s slower">
+				<a href="/">
+					{{.LogoSVG}}
+				</a>
+			</div>
+		</header>
+		
+		{{.Prerender}}
+    </main>
+
+  <footer>
+  </footer>
+
+    <script src="/app/build.js"></script>
+    <script type="text/javascript">
+		window.onPageLoad = function () {
+			window.app.state.putManyAsync({{.Data}});
+		};
+        window.onPageLoadRoute = {{.Route}}
+    </script>
+		
+  <!-- Matomo -->
+  <!--
+	<script type="text/javascript">
+	  var _paq = _paq || [];
+	  _paq.push(['disableCookies']); /* do not track visitors across visits / page-loads */
+	  _paq.push(['trackPageView']);
+	  _paq.push(['enableLinkTracking']);
+	  (function() {
+	    var u="//analytics.gupdy.com/";
+	    _paq.push(['setTrackerUrl', u+'piwik.php']);
+	    _paq.push(['setSiteId', '1']);
+	    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+	    g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+	  })();
+	</script>
+  -->
+	<!-- End Matomo Code -->
+</body>
+
+</html>

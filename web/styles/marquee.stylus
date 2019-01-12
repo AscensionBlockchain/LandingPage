@@ -1,0 +1,27 @@
+.marquee
+  position absolute
+  border-bottom 1px solid black
+  width 100vw
+  color #323e7c
+
+.marquee span
+  font-family 'Roboto', sans-serif
+  color #323e6c
+  font-weight 300 !important
+  text-rendering optimizeLegibility
+  font-kerning auto
+  -webkit-font-smoothing antialiased
+  font-feature-settings "liga", "kern"
+  text-align center
+  letter-spacing 1.5px
+  font-size 2vw
+
+
+.marquee span
+  padding-right 30px
+
+.marquee3k__copy
+  box-sizing border-box
+  padding-top 10px
+  padding-bottom 10px
+  line-height 1.3

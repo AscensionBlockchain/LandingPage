@@ -1,0 +1,85 @@
+version: '3.5'
+
+services:
+  web:
+    image: registry.gupdy.com:5000/getascension
+    build: ./services/getascension
+    ports:
+      - "20080:80"
+      - "20443:443"
+      - "127.0.0.1:7070:7070"
+    volumes:
+      - "/images:/images"
+      - "/getascension/assets:/root/assets"
+      - "/root/getascension.com:/root/getascension.com"
+    restart: always
+    # environment:
+      # - SENTRY_SINK=https://c359beabf1ea464197f2cb484e8dead7:c8dfee3cb0bb43aaa36d5714871e7be0@sentry.gupdy.com/2
+    # depends_on:
+      # - sentry
+      # - sentry-https
+    
+  # Sentry services below  
+    
+  # redis:
+  #   image: redis
+
+  # postgres:
+  #   image: postgres
+  #   environment:
+  #     POSTGRES_USER: sentry
+  #     POSTGRES_PASSWORD: sentry
+  #     POSTGRES_DB: sentry
+  #   volumes:
+  #    - sentry-postgres-volume:/var/lib/postgresql/data
+
+  # sentry:
+  #   image: sentry
+  #   depends_on:
+  #    - redis
+  #    - postgres
+  #    - sentry-worker
+  #    - sentry-cron
+  #   environment:
+  #     SENTRY_SECRET_KEY: 'UV7Epgt4FMFLqTdkLgqs9MfCKkcuN7Hc'
+  #     SENTRY_POSTGRES_HOST: postgres
+  #     SENTRY_DB_USER: sentry
+  #     SENTRY_DB_PASSWORD: sentry
+  #     SENTRY_REDIS_HOST: redis
+
+  # sentry-cron:
+  #   image: sentry
+  #   command: "sentry run cron"
+  #   environment:
+  #     SENTRY_SECRET_KEY: 'UV7Epgt4FMFLqTdkLgqs9MfCKkcuN7Hc'
+  #     SENTRY_POSTGRES_HOST: postgres
+  #     SENTRY_DB_USER: sentry
+  #     SENTRY_DB_PASSWORD: sentry
+  #     SENTRY_REDIS_HOST: redis
+
+  # sentry-worker:
+  #   image: sentry
+  #   depends_on:
+  #    - redis
+  #    - postgres
+  #   command: "sentry run worker"
+  #   environment:
+  #     SENTRY_SECRET_KEY: 'UV7Epgt4FMFLqTdkLgqs9MfCKkcuN7Hc'
+  #     SENTRY_POSTGRES_HOST: postgres
+  #     SENTRY_DB_USER: sentry
+  #     SENTRY_DB_PASSWORD: sentry
+  #     SENTRY_REDIS_HOST: redis
+
+  # sentry-https:
+  #   image: traefik
+  #   depends_on:
+  #     - sentry
+  #   volumes:
+  #     - "./services/sentry/traefik.toml:/etc/traefik/traefik.toml"
+  #     - "/root/gupdy.com:/root/gupdy.com"
+  #   ports:
+  #     - "9000:9000"
+    
+# volumes:
+#   sentry-postgres-volume:
+#     external: false

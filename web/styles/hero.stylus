@@ -1,0 +1,62 @@
+.hero
+  overflow hidden
+  width 100%
+  
+.hero .content
+  width 100%
+  margin auto
+  padding 2.5rem 2.5rem 2.5rem 1rem
+  
+.hero .copy
+  width 100%
+  
+.hero h1,
+.hero h4
+  // typography
+  font-family 'Roboto', sans-serif
+  color #323e6c
+  font-weight 300 !important
+  text-rendering optimizeLegibility
+  font-kerning auto
+  -webkit-font-smoothing antialiased
+  font-feature-settings "liga", "kern"
+  text-align center
+  
+.hero #title
+  position absolute
+  left 15vw
+  top 25vh
+  letter-spacing 2.5px
+  font-size 4vw
+  width 40vw
+  white-space nowrap
+  
+.hero #subtitle
+  font-size 1.75vw
+  line-height 40px
+  width 25vw
+  position absolute
+  left 65vw
+  top 65vh
+  
+.hero #whitepaper
+  position absolute
+  left 25vw
+  top 73vh
+
+@media screen and (max-width: 992px)
+  .hero #whitepaper
+    left 20vw
+  
+  .hero #title
+    font-size 5vw
+
+  .hero #subtitle
+    width 35vw
+    left 60vw
+    font-size 2.5vw
+  
+@media screen and (max-width: 800px)
+  .hero #title
+    font-size 6vw
+    top 30vh

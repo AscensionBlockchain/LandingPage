@@ -1,0 +1,32 @@
+footer
+  width 100vw
+  overflow hidden
+  height 300px
+  background-color #232323
+  color #ccc
+  text-align center
+
+footer .footer-group-1
+  float left
+  padding-left 10vw
+  padding-top 2rem
+
+footer .footer-group-1 button.button
+  background-color #434343
+  color #aaa
+
+footer h4
+  font-size 1.2rem
+  text-transform uppercase
+  letter-spacing 3px
+  margin-bottom 10px
+
+footer hr
+  height 1px
+  border none
+  color #333
+  background-color #333
+  margin-bottom 1.5rem
+
+footer img
+  vertical-align middle
