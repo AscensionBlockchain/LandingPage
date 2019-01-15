@@ -5,7 +5,7 @@ set -e
 echo "CGO disabled for production build"
 export CGO_ENABLED=0
 
-go generate github.com/jsnathan/getascension/cmd/server
+go generate github.com/AscensionBlockchain/LandingPage/cmd/server
 
 # go get github.com/google/gops
 # cp $GOPATH/bin/gops ./services/getascension/executables
@@ -14,7 +14,7 @@ go generate github.com/jsnathan/getascension/cmd/server
 
 mkdir -p ./services/getascension/executables
 go build -mod vendor -v $VENDOR -o ./services/getascension/executables/server \
-	github.com/jsnathan/getascension/cmd/server
+	github.com/AscensionBlockchain/LandingPage/cmd/server
 	
 
 # deploy

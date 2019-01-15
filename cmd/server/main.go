@@ -2,7 +2,7 @@ package main
 
 // TODO: enable this in production //go:generate build_web -q
 //go:generate build_web -q
-//go:generate go run github.com/jsnathan/getascension/cmd/server/tools/build_deploy
+//go:generate go run github.com/AscensionBlockchain/LandingPage/cmd/server/tools/build_deploy
 
 import (
 	"crypto/tls"
@@ -18,9 +18,9 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/integrii/flaggy"
 
-	"github.com/jsnathan/getascension/config"
-	"github.com/jsnathan/getascension/utils"
-	"github.com/jsnathan/getascension/utils/log"
+	"github.com/AscensionBlockchain/LandingPage/config"
+	"github.com/AscensionBlockchain/LandingPage/utils"
+	"github.com/AscensionBlockchain/LandingPage/utils/log"
 )
 
 var socialRoot string

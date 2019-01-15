@@ -20,8 +20,8 @@ import (
 	"github.com/gin-gonic/contrib/secure"
 	"github.com/gin-gonic/gin"
 
-	"github.com/jsnathan/getascension/config"
-	"github.com/jsnathan/getascension/utils/log"
+	"github.com/AscensionBlockchain/LandingPage/config"
+	"github.com/AscensionBlockchain/LandingPage/utils/log"
 )
 
 const (
