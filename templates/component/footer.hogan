@@ -4,6 +4,10 @@
 
     <hr>
     
+    <button class="button" data-target-telegram><img src="/assets/telegram-logo.png" height="16px"> Telegram</button>
+	
+    <hr>
+    
     <button class="button" data-target-discord><img src="/assets/discord-logo.png" height="16px"> Discord</button>
 	
     <hr>
