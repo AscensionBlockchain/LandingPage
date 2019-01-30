@@ -40,11 +40,9 @@
     }
 
     _setupWrapper() {
-      this.parent.style.overflowX = "hidden";
       this.wrapper = document.createElement("div");
       this.wrapper.classList.add("marquee3k__wrapper");
-      this.wrapStyles = "white-space: nowrap;";
-      this.wrapper.setAttribute("style", this.wrapStyles);
+      this.wrapper.style.whiteSpace = "nowrap";
     }
 
     _setupContent() {
@@ -81,29 +79,32 @@
     }
 
     _createClone() {
-      const clone = document.createElement("span");
+      const clone = this.content.cloneNode(true);
       clone.style.display = "inline-block";
       clone.classList.add(`${this.selector}__copy`);
-      clone.innerHTML = this.innerContent;
       this.wrapper.appendChild(clone);
     }
 
     animate() {
       if (!this.paused) {
-        if (!this.reverse) {
-          if (this.offset > this.contentWidth * -1) this.offset -= this.speed;
-          else this.offset = 0;
-        } else {
-          if (this.offset < 0) this.offset += this.speed;
-          else this.offset = this.contentWidth * -1;
-        }
+        const isScrolled = this.reverse
+          ? this.offset < 0
+          : this.offset > this.contentWidth * -1;
+        const direction = this.reverse ? -1 : 1;
+        const reset = this.reverse ? this.contentWidth * -1 : 0;
 
-        this.wrapper.setAttribute(
-          "style",
-          `${this.wrapStyles} transform: translate3d(${this.offset}px, 0, 0);
-        `
-        );
+        if (isScrolled) this.offset -= this.speed * direction;
+        else this.offset = reset;
+
+        this.wrapper.style.whiteSpace = "nowrap";
+        this.wrapper.style.transform = `translate(${
+          this.offset
+        }px, 0) translateZ(0)`;
       }
+    }
+
+    _refresh() {
+      this.contentWidth = this.content.offsetWidth;
     }
 
     repopulate(difference, isLarger) {
@@ -118,23 +119,35 @@
       }
     }
 
+    static refresh(index) {
+      MARQUEES[index]._refresh();
+    }
+
+    static refreshAll() {
+      for (let i = 0; i < MARQUEES.length; i++) {
+        MARQUEES[i]._refresh();
+      }
+    }
+
     static init(options = { selector: "marquee3k" }) {
-      const INSTANCES = [];
-      const marquees = document.querySelectorAll(`.${options.selector}`);
+      window.MARQUEES = [];
+      const marquees = Array.from(
+        document.querySelectorAll(`.${options.selector}`)
+      );
       let previousWidth = window.innerWidth;
       let timer;
 
       for (let i = 0; i < marquees.length; i++) {
         const marquee = marquees[i];
         const instance = new Marquee3k(marquee, options);
-        INSTANCES.push(instance);
+        MARQUEES.push(instance);
       }
 
       animate();
 
       function animate() {
-        for (const instance of INSTANCES) {
-          instance.animate();
+        for (let i = 0; i < MARQUEES.length; i++) {
+          MARQUEES[i].animate();
         }
         window.requestAnimationFrame(animate);
       }
@@ -148,8 +161,8 @@
             const isLarger = previousWidth < window.innerWidth;
             const difference = window.innerWidth - previousWidth;
 
-            for (const instance of INSTANCES) {
-              instance.repopulate(difference, isLarger);
+            for (let i = 0; i < MARQUEES.length; i++) {
+              MARQUEES[i].repopulate(difference, isLarger);
             }
 
             previousWidth = this.innerWidth;
